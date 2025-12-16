@@ -5,6 +5,7 @@ This project demonstrates advanced Flutter concepts including State Management (
 ## 📋 Prerequisites
 
 Before running the project, ensure you have the following installed:
+
 - **Flutter SDK**: version `^3.10.1` or higher.
 - **Dart SDK**.
 - **IDE**: VS Code or Android Studio.
@@ -15,46 +16,65 @@ Before running the project, ensure you have the following installed:
    ```bash
    git clone <repository_url>
    cd tp2
-Install dependencies:
-code
-Bash
-flutter pub get
-🏃 How to Run
-Since this project contains multiple exercises (Quiz Provider, Quiz BLoC, Weather App) within a single app structure, you must select which screen to load in lib/main.dart.
-1. Run Exercise 1: Quiz (Provider)
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   flutter pub get
+   ```
+
+---
+
+## 🏃 How to Run
+
+Since this project contains multiple exercises (Quiz Provider, Quiz BLoC, Weather App) within a single app structure, **you must select which screen to load in `lib/main.dart`**.
+
+### 1. Run Exercise 1: Quiz (Provider)
+
 To test the Provider implementation:
-Open lib/main.dart.
-Uncomment the Provider section and comment out the others:
-code
-Dart
-// TP2-Exercice1-Q1: Providers
-home: const QuizScreenProvider(),
-Run the app: flutter run
-2. Run Exercise 1: Quiz (BLoC)
+
+1. Open `lib/main.dart`.
+2. Uncomment the **Provider** section and comment out the others:
+   ```dart
+   // TP2-Exercice1-Q1: Providers
+   home: const QuizScreenProvider(),
+   ```
+3. Run the app: `flutter run`
+
+### 2. Run Exercise 1: Quiz (BLoC)
+
 To test the BLoC implementation:
-Open lib/main.dart.
-Uncomment the BLoC section:
-code
-Dart
-// TP2-Exercice1-Q2: BLoC
-home: BlocProvider(
-  create: (context) => QuizBloc()..add(LoadQuiz()),
-  child: const QuizScreenBloc(),
-),
-Run the app: flutter run
-3. Run Exercise 2: Weather App (API)
+
+1. Open `lib/main.dart`.
+2. Uncomment the **BLoC** section:
+   ```dart
+   // TP2-Exercice1-Q2: BLoC
+   home: BlocProvider(
+     create: (context) => QuizBloc()..add(LoadQuiz()),
+     child: const QuizScreenBloc(),
+   ),
+   ```
+3. Run the app: `flutter run`
+
+### 3. Run Exercise 2: Weather App (API)
+
 To test the Weather Application:
-Open lib/main.dart.
-Uncomment the Weather section:
-code
-Dart
-// TP2-Exercice2-Q2
-home: const WeatherScreen(),
-Run the app: flutter run
-📂 Project Architecture
+
+1. Open `lib/main.dart`.
+2. Uncomment the **Weather** section:
+   ```dart
+   // TP2-Exercice2-Q2
+   home: const WeatherScreen(),
+   ```
+3. Run the app: `flutter run`
+
+---
+
+## 📂 Project Architecture
+
 The project follows a Clean Architecture approach to separate concerns:
-code
-Code
+
+```
 lib/
 ├── business_logic/      # Logic layer (BLoC events & states)
 │   └── quiz/            # Quiz BLoC implementation
@@ -66,18 +86,27 @@ lib/
 │   ├── screens/         # Application screens (Quiz, Weather)
 │   └── widgets/         # Reusable widgets
 └── main.dart            # Entry point & Routing
-📦 Dependencies
-provider: ^6.0.5 (State Management)
-flutter_bloc: ^8.1.3 (State Management)
-equatable: ^2.0.5 (Value equality for BLoC)
-http: ^1.1.0 (API Requests)
-intl: ^0.17.0 (Date Formatting)
-font_awesome_flutter: ^10.6.0 (Icons)
-🔑 API Configuration
-The Weather App uses OpenWeatherMap.
+```
+
+## 📦 Dependencies
+
+- **provider**: ^6.0.5 (State Management)
+- **flutter_bloc**: ^8.1.3 (State Management)
+- **equatable**: ^2.0.5 (Value equality for BLoC)
+- **http**: ^1.1.0 (API Requests)
+- **intl**: ^0.17.0 (Date Formatting)
+- **font_awesome_flutter**: ^10.6.0 (Icons)
+
+## 🔑 API Configuration
+
+The Weather App uses **OpenWeatherMap**.
+
 The API Key is currently hardcoded for testing purposes in:
-lib/data/repositories/weather_repository.dart
-Note: If the weather data does not load, ensure the device has an active internet connection.
-👤 Author
-Samir HARCHE
+`lib/data/repositories/weather_repository.dart`
+
+> **Note**: If the weather data does not load, ensure the device has an active internet connection.
+
+## 👤 Author
+
+**Samir HARCHE**  
 Development Mobile / IoT
