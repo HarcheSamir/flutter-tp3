@@ -1,112 +1,106 @@
-# TP2: Advanced State Management & APIs in Flutter
 
-This project demonstrates advanced Flutter concepts including State Management (Provider & BLoC), API integration (REST), Streams, Futures, and UI theming/animations.
+**Instructions:**
+1.  Create a file named `README.md` at the root of your `tp3` folder.
+2.  Paste the content below.
 
-## 📋 Prerequisites
+***
 
-Before running the project, ensure you have the following installed:
+# 📱 TP3: Flutter & Firebase Quiz App
 
-- **Flutter SDK**: version `^3.10.1` or higher.
-- **Dart SDK**.
-- **IDE**: VS Code or Android Studio.
-
-## 🚀 Installation
-
-1. **Clone the repository** (or extract the project folder):
-   ```bash
-   git clone <repository_url>
-   cd tp2
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   flutter pub get
-   ```
+A fully dynamic Quiz application built with **Flutter** and **Firebase**. This project demonstrates advanced state management, cloud database integration (Firestore), user authentication, and clean architecture principles.
 
 ---
 
-## 🏃 How to Run
+## 🚀 Features
 
-Since this project contains multiple exercises (Quiz Provider, Quiz BLoC, Weather App) within a single app structure, **you must select which screen to load in `lib/main.dart`**.
+### 🔐 Authentication & User Management
+*   **Sign Up / Sign In:** Secure email/password authentication using **Firebase Auth**.
+*   **Real-time Auth Gate:** Auto-redirects users based on login status.
+*   **User Profile:** View profile details and generate random avatars via the **RoboHash API**.
+*   **Real-time Updates:** Avatar changes update instantly across the app via Firestore streams.
 
-### 1. Run Exercise 1: Quiz (Provider)
+### 🧠 Dynamic Quiz Engine
+*   **Cloud-Hosted Content:** Themes and questions are fetched dynamically from **Cloud Firestore**.
+*   **Interactive Gameplay:** Progress bars, immediate visual feedback (Green/Red), and score tracking.
+*   **Audio Integration:** Sound effects for correct (`win.mp3`) and incorrect (`loss.mp3`) answers.
 
-To test the Provider implementation:
-
-1. Open `lib/main.dart`.
-2. Uncomment the **Provider** section and comment out the others:
-   ```dart
-   // TP2-Exercice1-Q1: Providers
-   home: const QuizScreenProvider(),
-   ```
-3. Run the app: `flutter run`
-
-### 2. Run Exercise 1: Quiz (BLoC)
-
-To test the BLoC implementation:
-
-1. Open `lib/main.dart`.
-2. Uncomment the **BLoC** section:
-   ```dart
-   // TP2-Exercice1-Q2: BLoC
-   home: BlocProvider(
-     create: (context) => QuizBloc()..add(LoadQuiz()),
-     child: const QuizScreenBloc(),
-   ),
-   ```
-3. Run the app: `flutter run`
-
-### 3. Run Exercise 2: Weather App (API)
-
-To test the Weather Application:
-
-1. Open `lib/main.dart`.
-2. Uncomment the **Weather** section:
-   ```dart
-   // TP2-Exercice2-Q2
-   home: const WeatherScreen(),
-   ```
-3. Run the app: `flutter run`
+### 🛠️ Admin & Contribution (Bonus)
+*   **Add Questions:** A dedicated Admin interface allows users to contribute new questions to existing themes directly from the app.
+*   **Atomic Updates:** Uses `FieldValue.arrayUnion` to safely update database arrays.
 
 ---
 
-## 📂 Project Architecture
+## 🏗️ Architecture
 
-The project follows a Clean Architecture approach to separate concerns:
+The project follows the **Package by Layer** (Clean Architecture) principle to ensure separation of concerns:
 
-```
+```text
 lib/
-├── business_logic/      # Logic layer (BLoC events & states)
-│   └── quiz/            # Quiz BLoC implementation
-├── data/                # Data layer
-│   ├── models/          # Data models (WeatherModel, Question)
-│   ├── providers/       # ChangeNotifier providers (QuizProvider)
-│   └── repositories/    # API calls (WeatherRepository)
-├── presentation/        # UI layer
-│   ├── screens/         # Application screens (Quiz, Weather)
-│   └── widgets/         # Reusable widgets
-└── main.dart            # Entry point & Routing
+├── business_logic/       # State management logic (BLoC/Cubits)
+├── data/                 # Data layer
+│   ├── models/           # Data models (Question, QuizTheme)
+│   ├── services/         # Firebase interactions (AuthService, QuizService)
+│   └── repositories/     # Repositories (optional abstraction)
+├── presentation/         # UI layer
+│   ├── screens/          # Application screens (Login, Home, Quiz, Profile)
+│   └── widgets/          # Reusable UI components
+└── main.dart             # Entry point & App Configuration
 ```
 
-## 📦 Dependencies
+---
 
-- **provider**: ^6.0.5 (State Management)
-- **flutter_bloc**: ^8.1.3 (State Management)
-- **equatable**: ^2.0.5 (Value equality for BLoC)
-- **http**: ^1.1.0 (API Requests)
-- **intl**: ^0.17.0 (Date Formatting)
-- **font_awesome_flutter**: ^10.6.0 (Icons)
+## 🛠️ Tech Stack & Packages
 
-## 🔑 API Configuration
+*   **Framework:** Flutter (Dart)
+*   **Backend:** Firebase (Core, Auth, Firestore)
+*   **State Management:** `StreamBuilder` & `StatefulWidget` (plus `provider`/`flutter_bloc` foundations)
+*   **Key Dependencies:**
+    *   `firebase_auth`: User management.
+    *   `cloud_firestore`: NoSQL Database.
+    *   `audioplayers`: Sound effects.
+    *   `http`: Network requests (for RoboHash).
+    *   `font_awesome_flutter`: Icons.
+    *   `intl`: Formatting.
 
-The Weather App uses **OpenWeatherMap**.
+---
 
-The API Key is currently hardcoded for testing purposes in:
-`lib/data/repositories/weather_repository.dart`
+## ⚙️ Setup & Installation
 
-> **Note**: If the weather data does not load, ensure the device has an active internet connection.
+### 1. Prerequisites
+*   Flutter SDK installed.
+*   A Firebase project created on the [Firebase Console](https://console.firebase.google.com/).
+
+### 2. Installation
+Clone the repository and install dependencies:
+```bash
+git clone <your-repo-url>
+cd tp3
+flutter pub get
+```
+
+### 3. Firebase Configuration
+**Important:** This project requires a `firebase_options.dart` file which contains API keys.
+1.  Install the FlutterFire CLI:
+    ```bash
+    dart pub global activate flutterfire_cli
+    ```
+2.  Configure your project (select your Firebase project):
+    ```bash
+    flutterfire configure
+    ```
+3.  **Firestore Rules:** Ensure your Firestore database is in **Test Mode** or has rules allowing read/write.
+
+### 4. Run the App
+```bash
+flutter run
+```
+
+---
+
+
 
 ## 👤 Author
 
-**Samir HARCHE**  
-Development Mobile / IoT
+**Samir HARCHE**
+*Mobile Development / IoT Unit*
+*Date: December 2025*
