@@ -1,4 +1,4 @@
-name: tp2
+name: tp3
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
@@ -19,6 +19,15 @@ dependencies:
   intl: ^0.20.0              # For Date Formatting
   font_awesome_flutter: ^10.6.0 # For Weather Icons
 
+  firebase_core: 
+  firebase_auth:
+  cloud_firestore: 
+  firebase_storage: 
+  
+  # Tools for Ex 3
+  image_picker: ^1.0.4
+  audioplayers: ^5.2.1
+  
   # Default
   cupertino_icons: ^1.0.2
 
@@ -29,3 +38,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  
+  assets:
+    - assets/audio/
