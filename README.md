@@ -1,9 +1,5 @@
 
-**Instructions:**
-1.  Create a file named `README.md` at the root of your `tp3` folder.
-2.  Paste the content below.
 
-***
 
 # 📱 TP3: Flutter & Firebase Quiz App
 
